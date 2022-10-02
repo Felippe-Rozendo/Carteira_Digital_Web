@@ -81,7 +81,7 @@ namespace carteira_digital_api.Controllers.Auth
                     token = new JwtSecurityTokenHandler().WriteToken(token)
                 });
             }
-            return Unauthorized();
+            return BadRequest();
         }
 
 

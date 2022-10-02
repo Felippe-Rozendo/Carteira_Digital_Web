@@ -1,25 +1,26 @@
 <div class="container">
   <div class="cardLogin">
-    <form>
+    <form [formGroup]="formLogin">
       <div style="font-size: 135px; text-align: center;color: #f35dbe;">
         <i class="fa fa-usd"></i>
       </div>
       <div class="field" style="margin-top: 0px">
         <div class="offset-md-1">
           <label style="margin-bottom: 5px"> EMAIL </label>
-          <input type="email" name="login" class="form-control " placeholder="E-MAIL">
+          <input type="email" name="login" class="form-control " placeholder="E-MAIL" formControlName="email">
         </div>
       </div>
 
       <div class="field">
         <div class="offset-md-1">
           <label style="margin-bottom: 5px"> SENHA </label>
-          <input type="password" name="rg" class="form-control" placeholder="SENHA">
+          <input type="password" name="rg" class="form-control" placeholder="SENHA" formControlName="password">
         </div>
       </div>
 
       <div class="d-grid gap-2 field">
-        <button class="btn btn-primary offset-md-1" type="button" routerLink='/dashboard'>Login</button>
+        <!-- <button class="btn btn-primary offset-md-1" type="button" routerLink='/dashboard'>Login</button> -->
+        <button class="btn btn-primary offset-md-1" type="button" (click)="login()">Login</button>
         <div class="form-check" style="margin-left: 9%;">
           <label> <input class="form-check-input" type="checkbox" value=""> Lembre-me </label>
         </div>

@@ -14,26 +14,29 @@ export class UserService {
   constructor(
     private http: HttpClient,
     private router: Router
-    ) { }
+  ) { }
 
   private baseUrl = environment.url + '/Auth/'
   public user: Observable<userLogin>;
   jwtHelper = new JwtHelperService();
 
-  async loginAsync(model: userLogin): Promise<userLogin> {    
-    try{
+  async loginAsync(model: userLogin): Promise<userLogin> {
+    try {
       var token = await this.http.post<any>(`${this.baseUrl}Login`, model).toPromise()
       localStorage.setItem('token', token.token);
       let name = this.jwtHelper.decodeToken(token.token)["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
-      console.log(name)
       return name
-    }catch{
+    } catch {
       console.log('User Not Found')
     }
-    }
+  }
 
-  register(model: any) {
-    return this.http.post(`${this.baseUrl}/Register`, model);
+  async register(model: any) {
+    try {
+      return await this.http.post(`${this.baseUrl}Register`, model);
+    } catch (err) {
+      console.log(err.message)
+    }
   }
 
   loggedIn(sair: boolean) {

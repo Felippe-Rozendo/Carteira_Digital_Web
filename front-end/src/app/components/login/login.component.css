@@ -1,37 +1,84 @@
-.cardLogin{
-    width: 500px;
-    height: 600px;
-    border-radius: 20px;
-    box-shadow: 0px 0px 20px 0px #000000b3;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
 
-    /* EFEITO DE VIDRO */
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
+.containerCard {
+    margin: 0 5%;
 }
 
-.field{
-    width: 90%;
-    margin-top: 5%;
-    color: #fff;
-    font-family: tahoma;
+@media (max-width: 768px) {
+    .cardLogin {
+        width: 100%;
+    }
+
+    .container {
+        margin-top: 50%
+    }
 }
 
-.buttons{
+@media (min-width: 769px) {
+    .cardLogin {
+        width: 100%;
+    }
+
+    .container {
+        margin-top: 15%;
+        max-width: 750px;
+    }
+}
+
+.cardLogin {
+    height: 420px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 45%);
+    background-color: #f5f7fa;
+    padding: 0 5% 0 5%;
+}
+
+.field {
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+}
+
+.buttons {
     display: flex;
     flex-direction: column;
 }
 
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    background-image: url(../../../assets/fundo-login.jpg); background-position: center;
-    background-size: cover;
+.template {
+    padding: 30px 20px 0 20px;
+}
 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    min-width: 100%;
-    min-height: 100%;
+.offset-md-1 {}
+
+.btn-blk {
+    height: 45px;
+    width: 100%;
+}
+
+.btn-blk:hover {
+    height: 50px;
+    width: 100%;
+}
+
+.btn-wht {
+    height: 45px;
+    width: 100%;
+}
+
+.btn-wht:hover {
+    height: 50px;
+    width: 100%;
+}
+
+.senha {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    color: black;
+    text-decoration: none;
+}
+
+.senha:hover {
+    font-size: 17px;
+    transform: scale(1.03);
+    transition: 250ms linear;
 }

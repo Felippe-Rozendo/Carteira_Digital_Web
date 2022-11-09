@@ -1,34 +1,75 @@
 <div class="container">
-  <div class="cardLogin">
-    <form [formGroup]="formLogin">
-      <div style="font-size: 135px; text-align: center;color: #f35dbe;">
-        <i class="fa fa-usd"></i>
+  <div class="containerCard">
+    <div class="cardLogin">
+      <div class="template" *ngIf="!cadastrar">
+        <ng-container *ngTemplateOutlet="tempLogin"></ng-container>
       </div>
-      <div class="field" style="margin-top: 0px">
-        <div class="offset-md-1">
-          <label style="margin-bottom: 5px"> EMAIL </label>
-          <input type="email" name="login" class="form-control " placeholder="E-MAIL" formControlName="email">
-        </div>
+      <div *ngIf="cadastrar">
+        <ng-container *ngTemplateOutlet="tempRegister"></ng-container>
       </div>
-
-      <div class="field">
-        <div class="offset-md-1">
-          <label style="margin-bottom: 5px"> SENHA </label>
-          <input type="password" name="rg" class="form-control" placeholder="SENHA" formControlName="password">
-        </div>
-      </div>
-
-      <div class="d-grid gap-2 field">
-        <!-- <button class="btn btn-primary offset-md-1" type="button" routerLink='/dashboard'>Login</button> -->
-        <button class="btn btn-primary offset-md-1" type="button" (click)="login()">Login</button>
-        <div class="form-check" style="margin-left: 9%;">
-          <label> <input class="form-check-input" type="checkbox" value=""> Lembre-me </label>
-        </div>
-        <a style="text-align: center; margin-left: 10%; color: white" href="">Cadastrar</a>
-        <a style="text-align: center; margin-left: 10%; color: white" href="">Esqueci minha
-          senha</a>
-      </div>
-
-    </form>
+    </div>
   </div>
 </div>
+
+<ng-template #tempLogin>
+  <form [formGroup]="formLogin">
+    <div class="field">
+      <div style="padding-bottom: 10px;">
+        <label style="margin-bottom: 5px"> EMAIL </label>
+        <input type="email" name="login" class="form-control " formControlName="email">
+      </div>
+    </div>
+
+    <div class="field">
+      <div style="padding-bottom: 10px;">
+        <label style="margin-bottom: 5px"> SENHA </label>
+        <input type="password" name="password" class="form-control" formControlName="password">
+      </div>
+    </div>
+
+    <div class="d-flex row mt-3">
+      <div style="height:70px">
+        <button class="btn btn-blk" type="button" (click)="login()">LOGIN</button>
+      </div>
+      <div style="height:70px">
+        <button class="btn btn-wht" type="button" (click)="cadastrar = true">CADASTRAR</button>
+      </div>
+      <span style="text-align: center;">
+        <a class="senha" href="">ESQUECI MINHA SENHA</a>
+      </span>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #tempRegister>
+  <form [formGroup]="formRegister">
+    <div class="field">
+      <div style="padding-bottom: 10px;">
+        <label style="margin-bottom: 5px"> USERNAME </label>
+        <input type="text" name="username" class="form-control " formControlName="userName">
+      </div>
+    </div>
+
+    <div class="field">
+      <div style="padding-bottom: 10px;">
+        <label style="margin-bottom: 5px"> EMAIL </label>
+        <input type="email" name="email" class="form-control " formControlName="email">
+      </div>
+    </div>
+
+    <div class="field">
+      <div style="padding-bottom: 10px;">
+        <label style="margin-bottom: 5px"> SENHA </label>
+        <input type="password" name="rg" class="form-control" formControlName="password">
+      </div>
+    </div>
+
+    <div class="d-grid gap-2 field mt-3">
+      <button class="btn btn-primary" type="button" (click)="register()">Cadastrar</button>
+      <span class="mt-2" style="text-align: center;">
+        <a style="text-align: center; margin-left: 10%; color: white; cursor: pointer"
+          (click)="cadastrar = false">Cancelar</a>
+      </span>
+    </div>
+  </form>
+</ng-template>
